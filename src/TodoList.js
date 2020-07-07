@@ -8,7 +8,7 @@ const TodoList = ({ todos, removeTodo, toggleTodo, updateTodo }) => {
   return (
     <Paper>
       <List>
-        {todos.map((todo) => (
+        {todos.map((todo, id) => (
           <>
             <Todo
               id={todo.id}
@@ -19,7 +19,7 @@ const TodoList = ({ todos, removeTodo, toggleTodo, updateTodo }) => {
               toggleTodo={toggleTodo}
               updateTodo={updateTodo}
             />
-            <Divider />
+            {id < todos.length - 1 && <Divider />}
           </>
         ))}
       </List>

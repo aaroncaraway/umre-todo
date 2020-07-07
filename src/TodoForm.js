@@ -19,7 +19,7 @@ const TodoForm = ({ addTodo }) => {
           onChange={handleChange}
           margin="normal"
           label="Add New Todo"
-          fullwidth
+          fullWidth
         ></TextField>
       </form>
     </Paper>

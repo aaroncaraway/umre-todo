@@ -7,16 +7,26 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import useToggle from "./hooks/useToggleState";
+import EditTodoForm from "./EditTodoForm";
 
-const Todo = ({ id, task, completed, removeTodo, toggleTodo }) => {
+const Todo = ({ id, task, completed, removeTodo, toggleTodo, updateTodo }) => {
   const [isEditing, toggle] = useToggle(false);
   return (
-    <ListItem onClick={() => toggleTodo(id)}>
+    <ListItem>
       {isEditing ? (
-        <h1>edit time!</h1>
+        <EditTodoForm
+          id={id}
+          task={task}
+          updateTodo={updateTodo}
+          toggleEdit={toggle}
+        />
       ) : (
         <>
-          <Checkbox tabIndex={-1} checked={completed} />
+          <Checkbox
+            tabIndex={-1}
+            checked={completed}
+            onClick={() => toggleTodo(id)}
+          />
           <ListItemText
             style={{ textDecoration: completed ? "line-through" : "none" }}
           >

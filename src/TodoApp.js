@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -10,7 +10,8 @@ import TodoList from "./TodoList";
 import useTodoState from "./hooks/useTodoState";
 
 const TodoApp = () => {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || "";
+  // const initialTodos = [{ id: 1, task: "Pet Michael", completed: false }];
+  const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || "[]";
   const { todos, addTodo, removeTodo, toggleTodo, updateTodo } = useTodoState(
     initialTodos
   );
@@ -19,10 +20,6 @@ const TodoApp = () => {
   //   { id: 2, task: "Walk Turtle", completed: true },
   //   { id: 3, task: "Walk Husband", completed: false },
   // ];
-
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <Paper

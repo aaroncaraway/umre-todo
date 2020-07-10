@@ -12,10 +12,12 @@ import { TodoProvider } from "./context/TodoContext";
 
 const TodoApp = () => {
   // const initialTodos = [{ id: 1, task: "Pet Michael", completed: false }];
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || "[]";
-  const { todos, addTodo, removeTodo, toggleTodo, updateTodo } = useTodoState(
-    initialTodos
-  );
+
+  // const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || "[]";
+  // const { todos, addTodo, removeTodo, toggleTodo, updateTodo } = useTodoState(
+  //   initialTodos
+  // );
+
   // const initialTodos = [
   //   { id: 1, task: "Walk Cats", completed: false },
   //   { id: 2, task: "Walk Turtle", completed: true },
@@ -40,13 +42,8 @@ const TodoApp = () => {
       <Grid container justify="center" style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
           <TodoProvider>
-            <TodoForm addTodo={addTodo} />
-            <TodoList
-              todos={todos}
-              removeTodo={removeTodo}
-              toggleTodo={toggleTodo}
-              updateTodo={updateTodo}
-            />
+            <TodoForm />
+            <TodoList />
           </TodoProvider>
         </Grid>
       </Grid>

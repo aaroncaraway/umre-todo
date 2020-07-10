@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import useTodoState from "./hooks/useTodoState";
+import { TodoProvider } from "./context/TodoContext";
 
 const TodoApp = () => {
   // const initialTodos = [{ id: 1, task: "Pet Michael", completed: false }];
@@ -38,13 +39,15 @@ const TodoApp = () => {
       </AppBar>
       <Grid container justify="center" style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
-          <TodoForm addTodo={addTodo} />
-          <TodoList
-            todos={todos}
-            removeTodo={removeTodo}
-            toggleTodo={toggleTodo}
-            updateTodo={updateTodo}
-          />
+          <TodoProvider>
+            <TodoForm addTodo={addTodo} />
+            <TodoList
+              todos={todos}
+              removeTodo={removeTodo}
+              toggleTodo={toggleTodo}
+              updateTodo={updateTodo}
+            />
+          </TodoProvider>
         </Grid>
       </Grid>
     </Paper>

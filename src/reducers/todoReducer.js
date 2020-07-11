@@ -12,7 +12,7 @@ const todoReducer = (state, action) => {
         todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
       );
     case "UPDATE":
-      state.map((todo) =>
+      return state.map((todo) =>
         todo.id === action.id ? { ...todo, task: action.newTask } : todo
       );
     default:

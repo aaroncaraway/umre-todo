@@ -4,14 +4,14 @@ import useInput from "./hooks/useInputState";
 import { TodoContext } from "./context/TodoContext";
 
 const EditTodoForm = ({ id, task, toggleEdit }) => {
-  const { updateTodo } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
   const [value, handleChange, reset] = useInput(task);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        updateTodo(id, value);
+        dispatch({ type: "UPDATE", newTask: value, id: id });
         reset();
         toggleEdit();
       }}
